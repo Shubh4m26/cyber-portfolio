@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -11,26 +12,26 @@ import {
 const cards = [
   {
     icon: Shield,
-    title: "SOC Status",
-    value: "Operational",
+    title: "SOC Operations",
+    value: "Monitoring & Response",
     color: "text-green-400",
   },
   {
     icon: Server,
-    title: "SIEM",
-    value: "Wazuh Cluster",
+    title: "SIEM Platforms",
+    value: "Wazuh + IBM QRadar",
     color: "text-cyan-400",
   },
   {
     icon: Cpu,
-    title: "Infrastructure",
-    value: "Docker + FortiGate",
+    title: "SOC Infrastructure",
+    value: "Docker · Networking · Security",
     color: "text-blue-400",
   },
   {
     icon: Activity,
     title: "Automation",
-    value: "PowerShell Ready",
+    value: "PowerShell · Security Workflows",
     color: "text-purple-400",
   },
 ];
@@ -39,7 +40,6 @@ export default function SocCards() {
   return (
     <section className="mt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
         {cards.map((card, index) => (
           <motion.div
             key={card.title}
@@ -67,7 +67,6 @@ export default function SocCards() {
             </h3>
           </motion.div>
         ))}
-
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ export default function About() {
     >
       <SectionTitle
         subtitle="ABOUT ME"
-        title="Engineering Security Infrastructure"
+        title="SOC Infrastructure & Detection Engineering"
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -25,25 +25,24 @@ export default function About() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-base sm:text-lg text-zinc-300 leading-8 sm:leading-9">
-            I focus on building and supporting enterprise
-            Security Operations Center environments,
-            combining security infrastructure deployment,
-            SIEM engineering, endpoint onboarding and
-            detection engineering. My experience includes
-            working with Wazuh, IBM QRadar, Docker,
-            FortiGate, OPNsense, Active Directory,
+            I work across enterprise Security Operations Center
+            environments, combining SOC infrastructure engineering,
+            SIEM deployment, detection engineering and security
+            operations. My experience includes working with Wazuh,
+            IBM QRadar, Docker, FortiGate, OPNsense, Active Directory,
             Windows Server and PowerShell automation.
           </p>
 
           <p className="mt-6 sm:mt-8 text-base sm:text-lg text-zinc-400 leading-8 sm:leading-9">
-            My work includes deploying security monitoring
-            infrastructure, integrating log sources,
-            developing and tuning detection rules,
-            investigating security alerts and supporting
-            endpoint onboarding. I am also interested in
-            building scalable security platforms through
-            infrastructure automation, secure networking
-            and centralized monitoring.
+            My work includes designing and deploying SOC
+            infrastructure, onboarding endpoint and log sources,
+            integrating security monitoring platforms and supporting
+            centralized visibility across enterprise environments.
+            I also develop and fine-tune detection rules, analyze
+            security events and investigate alerts across identity,
+            endpoint, operating system and application telemetry,
+            including Active Directory, antivirus, ERP, PowerShell,
+            Microsoft Office and endpoint security logs.
           </p>
         </motion.div>
 
