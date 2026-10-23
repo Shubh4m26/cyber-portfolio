@@ -4,7 +4,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  ArrowUpRight,
   Shield,
   Activity,
   Network,
@@ -57,19 +56,9 @@ const fallbackMap: Record<string, React.ElementType> = {
   "risk-assessment": ChartNoAxesCombined,
 };
 
-const initialsMap: Record<string, string> = {
-  wazuh: "W",
-  "detection-engineering": "DE",
-  "alert-monitoring": "AM",
-  vpn: "VPN",
-  vlan: "VLAN",
-  "risk-assessment": "RA",
-};
-
 export default function TechnologyCard({ skill, onClick }: Props) {
   const logo = logoMap[skill.id];
   const Icon = fallbackMap[skill.id] ?? Shield;
-  const initials = initialsMap[skill.id] ?? skill.title.slice(0, 2);
 
   const [imageError, setImageError] = useState(false);
 
@@ -81,83 +70,80 @@ export default function TechnologyCard({ skill, onClick }: Props) {
     <motion.button
       type="button"
       onClick={onClick}
-      whileHover={{ y: -5 }}
-      whileTap={{ scale: 0.985 }}
+      whileHover={{ y: -6, scale: 1.02 }}
+      whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.2 }}
       className="
-        group relative flex min-h-[190px] w-full flex-col
-        overflow-hidden rounded-2xl border border-white/[0.08]
-        bg-[#0d1220] p-5 text-left
-        transition-colors duration-300
-        hover:border-cyan-400/40 hover:bg-[#111827]
-        focus-visible:outline-none focus-visible:ring-2
-        focus-visible:ring-cyan-400
+        group flex w-full flex-col items-center
+        rounded-2xl border border-white/[0.08]
+        bg-[#11121f] p-5 text-center
+        transition-all duration-300
+        hover:border-violet-500/50
+        hover:bg-[#171829]
+        hover:shadow-[0_0_25px_rgba(139,92,246,0.12)]
+        focus-visible:outline-none
+        focus-visible:ring-2 focus-visible:ring-violet-400
       "
     >
-      {/* Technology logo */}
-      <div className="flex items-center justify-between">
-        <div
-          className="
-            flex h-12 w-12 items-center justify-center
-            rounded-xl border border-white/[0.08]
-            bg-[#151d2d] p-1.5
-            transition-all duration-300
-            group-hover:border-cyan-400/30
-            group-hover:bg-cyan-400/10
-          "
-        >
-          {logo && !imageError ? (
-            <img
-              src={logoPath}
-              alt={`${skill.title} logo`}
-              className="h-full w-full object-contain"
-              onError={() => setImageError(true)}
-            />
-          ) : (
-            <Icon
-              size={24}
-              strokeWidth={1.8}
-              className="text-cyan-400"
-            />
-          )}
-        </div>
-
-        <ArrowUpRight
-          size={17}
-          className="
-            text-zinc-600 transition-all duration-300
-            group-hover:-translate-y-0.5
-            group-hover:translate-x-0.5
-            group-hover:text-cyan-400
-          "
-        />
+      {/* Larger logo container */}
+      <div
+        className="
+          flex h-[120px] w-[120px] shrink-0
+          items-center justify-center
+          overflow-hidden rounded-2xl
+          border border-white/[0.08]
+          bg-white p-2
+          shadow-[0_4px_20px_rgba(0,0,0,0.25)]
+          transition-all duration-300
+          group-hover:border-violet-400/40
+          group-hover:shadow-[0_0_20px_rgba(139,92,246,0.15)]
+        "
+      >
+        {logo && !imageError ? (
+          <img
+            src={logoPath}
+            alt={`${skill.title} logo`}
+            className="h-full w-full object-contain"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <Icon
+            size={48}
+            strokeWidth={1.6}
+            className="text-violet-500"
+          />
+        )}
       </div>
 
-      {/* Skill information */}
-      <div className="mt-4">
-        <h2 className="text-[15px] font-semibold tracking-tight text-white">
-          {skill.title}
-        </h2>
+      {/* Technology name */}
+      <h2
+        className="
+          mt-4 text-sm font-semibold tracking-wide
+          text-zinc-200 transition-colors
+          group-hover:text-white
+        "
+      >
+        {skill.title}
+      </h2>
 
-        <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] text-cyan-400">
-          {skill.category}
-        </p>
+      {/* Category */}
+      <p
+        className="
+          mt-2 text-[9px] font-medium uppercase
+          tracking-[0.12em] text-violet-400
+        "
+      >
+        {skill.category}
+      </p>
 
-        <p className="mt-3 line-clamp-2 text-xs leading-5 text-zinc-400">
-          {skill.overview}
-        </p>
-      </div>
-
-      {/* Card footer */}
-      <div className="mt-auto flex items-center justify-between pt-4">
-        <span className="text-[10px] text-zinc-500 transition-colors group-hover:text-cyan-400">
-          Explore experience
-        </span>
-
-        <span className="text-[10px] font-medium text-zinc-600">
-          {initials}
-        </span>
-      </div>
+      {/* Hover indicator */}
+      <div
+        className="
+          mt-4 h-[2px] w-8 rounded-full
+          bg-white/10 transition-all duration-300
+          group-hover:w-14 group-hover:bg-violet-400
+        "
+      />
     </motion.button>
   );
 }
