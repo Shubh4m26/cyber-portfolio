@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +12,7 @@ import {
   TriangleAlert,
   GraduationCap,
 } from "lucide-react";
+
 import { Skill } from "./SkillData";
 
 interface Props {
@@ -29,265 +31,281 @@ export default function SkillModal({ skill, onClose }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+            initial={{ opacity: 0, scale: 0.97, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.25 }}
-            className="fixed left-1/2 top-1/2 z-50 w-[95%] max-w-4xl -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-cyan-500/20 bg-[#0f172a] shadow-2xl max-h-[90vh] overflow-y-auto"
+            exit={{ opacity: 0, scale: 0.97, y: 15 }}
+            transition={{ duration: 0.2 }}
+            className="
+              fixed left-1/2 top-1/2 z-50
+              w-[95%] max-w-4xl
+              -translate-x-1/2 -translate-y-1/2
+              overflow-y-auto
+              max-h-[90vh]
+              rounded-2xl
+              border border-white/[0.10]
+              bg-[#0f172a]
+              shadow-2xl
+            "
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-zinc-800 p-6">
-
+            <div
+              className="
+                sticky top-0 z-10
+                flex items-center justify-between
+                border-b border-white/[0.08]
+                bg-[#0f172a]/95
+                px-6 py-5
+                backdrop-blur-xl
+              "
+            >
               <div>
-                <h2 className="text-3xl font-bold text-cyan-400">
+                <h2 className="text-2xl font-semibold tracking-tight text-cyan-400">
                   {skill.title}
                 </h2>
 
-                <p className="text-zinc-400 mt-1">
+                <p className="mt-1 text-sm text-zinc-400">
                   {skill.category}
                 </p>
               </div>
 
               <button
+                type="button"
                 onClick={onClose}
-                className="rounded-full p-2 hover:bg-zinc-800 transition"
+                aria-label="Close skill details"
+                className="
+                  rounded-lg p-2
+                  text-zinc-400
+                  transition-colors
+                  hover:bg-white/[0.06]
+                  hover:text-white
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-cyan-400
+                "
               >
-                <X />
+                <X size={21} />
               </button>
-
             </div>
 
             {/* Content */}
-            <div className="p-6 space-y-10">
+            <div className="space-y-9 p-6 sm:p-8">
 
               {/* Overview */}
-
-              <div>
-
-                <h3 className="text-2xl font-semibold mb-3">
+              <section>
+                <h3 className="mb-3 text-lg font-semibold text-white">
                   Overview
                 </h3>
 
-                <p className="text-zinc-300 leading-8">
+                <p className="text-sm leading-7 text-zinc-300">
                   {skill.overview}
                 </p>
+              </section>
 
-              </div>
-
-              {/* Built */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <Wrench className="text-green-400" />
+              {/* What I Built */}
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <Wrench size={19} className="text-cyan-400" />
                   What I Built
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-3">
-
+                <div className="grid gap-3 sm:grid-cols-2">
                   {skill.built.map((item) => (
-
                     <div
                       key={item}
-                      className="rounded-xl bg-[#111827] border border-cyan-500/10 p-4"
+                      className="
+                        rounded-xl
+                        border border-white/[0.08]
+                        bg-[#111827]
+                        p-4
+                        text-sm leading-6 text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/30
+                        hover:bg-[#151e2e]
+                      "
                     >
                       {item}
                     </div>
-
                   ))}
-
                 </div>
-
-              </div>
+              </section>
 
               {/* Responsibilities */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <CheckCircle className="text-cyan-400" />
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <CheckCircle size={19} className="text-cyan-400" />
                   Key Responsibilities
                 </h3>
 
-                <div className="grid md:grid-cols-2 gap-3">
-
+                <div className="grid gap-3 sm:grid-cols-2">
                   {skill.responsibilities.map((item) => (
-
                     <div
                       key={item}
-                      className="rounded-xl bg-[#111827] border border-cyan-500/10 p-4"
+                      className="
+                        rounded-xl
+                        border border-white/[0.08]
+                        bg-[#111827]
+                        p-4
+                        text-sm leading-6 text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/30
+                        hover:bg-[#151e2e]
+                      "
                     >
                       {item}
                     </div>
-
                   ))}
-
                 </div>
-
-              </div>
+              </section>
 
               {/* Technologies */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <Cpu className="text-cyan-400" />
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <Cpu size={19} className="text-cyan-400" />
                   Technologies Used
                 </h3>
 
-                <div className="flex flex-wrap gap-3">
-
+                <div className="flex flex-wrap gap-2">
                   {skill.technologies.map((tech) => (
-
                     <span
                       key={tech}
-                      className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-cyan-300"
+                      className="
+                        rounded-lg
+                        border border-white/[0.10]
+                        bg-[#111827]
+                        px-3 py-2
+                        text-sm text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/40
+                        hover:bg-cyan-400/[0.06]
+                        hover:text-cyan-300
+                      "
                     >
                       {tech}
                     </span>
-
                   ))}
-
                 </div>
-
-              </div>
+              </section>
 
               {/* Challenges */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <TriangleAlert className="text-orange-400" />
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <TriangleAlert size={19} className="text-orange-400" />
                   Challenges Solved
                 </h3>
 
                 <div className="space-y-3">
-
                   {skill.challenges.map((item) => (
-
                     <div
                       key={item}
-                      className="rounded-xl bg-[#111827] border border-orange-500/20 p-4"
+                      className="
+                        rounded-xl
+                        border border-white/[0.08]
+                        bg-[#111827]
+                        p-4
+                        text-sm leading-6 text-zinc-300
+                        transition-all duration-200
+                        hover:border-orange-400/25
+                        hover:bg-[#151e2e]
+                      "
                     >
-                      • {item}
+                      <span className="mr-2 text-orange-400">•</span>
+                      {item}
                     </div>
-
                   ))}
-
                 </div>
-
-              </div>
+              </section>
 
               {/* Lessons */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <GraduationCap className="text-purple-400" />
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <GraduationCap size={19} className="text-cyan-400" />
                   Lessons Learned
                 </h3>
 
                 <div className="space-y-3">
-
                   {skill.lessons.map((item) => (
-
                     <div
                       key={item}
-                      className="rounded-xl bg-[#111827] border border-purple-500/20 p-4"
+                      className="
+                        rounded-xl
+                        border border-white/[0.08]
+                        bg-[#111827]
+                        p-4
+                        text-sm leading-6 text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/30
+                        hover:bg-[#151e2e]
+                      "
                     >
-                      • {item}
+                      <span className="mr-2 text-cyan-400">•</span>
+                      {item}
                     </div>
-
                   ))}
-
                 </div>
+              </section>
 
-              </div>
-
-              {/* Projects */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <FolderGit2 className="text-cyan-400" />
+              {/* Related Projects */}
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <FolderGit2 size={19} className="text-cyan-400" />
                   Related Projects
                 </h3>
 
-                <div className="flex flex-wrap gap-3">
-
+                <div className="flex flex-wrap gap-2">
                   {skill.projects.map((project) => (
-
                     <span
                       key={project}
-                      className="rounded-full border border-cyan-500/30 px-4 py-2 text-cyan-300"
+                      className="
+                        rounded-lg
+                        border border-white/[0.10]
+                        bg-[#111827]
+                        px-3 py-2
+                        text-sm text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/40
+                        hover:text-cyan-300
+                      "
                     >
                       {project}
                     </span>
-
                   ))}
-
                 </div>
+              </section>
 
-              </div>
-
-              {/* Blogs */}
-
-              <div>
-
-                <h3 className="flex items-center gap-2 text-2xl font-semibold mb-5">
-                  <BookOpen className="text-yellow-400" />
+              {/* Related Blogs */}
+              <section>
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
+                  <BookOpen size={19} className="text-cyan-400" />
                   Related Blogs
                 </h3>
 
                 <div className="space-y-3">
-
                   {skill.blogs.map((blog) => (
-
                     <div
                       key={blog}
-                      className="rounded-xl bg-[#111827] border border-cyan-500/10 p-4"
+                      className="
+                        rounded-xl
+                        border border-white/[0.08]
+                        bg-[#111827]
+                        p-4
+                        text-sm leading-6 text-zinc-300
+                        transition-all duration-200
+                        hover:border-cyan-400/30
+                        hover:bg-[#151e2e]
+                      "
                     >
                       {blog}
                     </div>
-
                   ))}
-
                 </div>
-
-              </div>
-
-              {/* Confidence */}
-
-              <div>
-
-                <h3 className="text-2xl font-semibold mb-4">
-                  Confidence
-                </h3>
-
-                <div className="w-full h-4 rounded-full bg-zinc-800 overflow-hidden">
-
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${skill.level}%` }}
-                    transition={{ duration: 0.8 }}
-                    className="h-full bg-cyan-400"
-                  />
-
-                </div>
-
-                <p className="mt-3 text-cyan-400 font-semibold">
-                  {skill.level}% Practical Experience
-                </p>
-
-              </div>
+              </section>
 
             </div>
-
           </motion.div>
         </>
       )}
